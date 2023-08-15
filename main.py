@@ -15,4 +15,16 @@ def encrypt(text, shift):
       message.append(alphabet[position])
   print("".join(message))
 
-encrypt(text, shift)
+def decrypt(text, shift):
+  message = []
+  length = len(alphabet)
+  for letter in text:
+    if letter in alphabet:
+      position = ((alphabet.index(letter) - shift) % (length))
+      message.append(alphabet[position])
+  print("".join(message))
+
+if direction == "encode":
+  encrypt(text=text, shift=shift)
+if direction == "decode":
+  decrypt(text=text, shift=shift)
