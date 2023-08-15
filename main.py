@@ -6,25 +6,17 @@ shift = int(input("Type the shift number:\n"))
 
 
 
-def encrypt(text, shift):
+def caesar(text, shift):
   message = []
   length = len(alphabet)
   for letter in text:
     if letter in alphabet:
-      position = ((alphabet.index(letter) +shift) % (length))
+      if direction == "encode":
+        position = ((alphabet.index(letter) + shift) % (length))
+      elif direction == "decode":
+        position = ((alphabet.index(letter) - shift) % (length))
       message.append(alphabet[position])
   print("".join(message))
 
-def decrypt(text, shift):
-  message = []
-  length = len(alphabet)
-  for letter in text:
-    if letter in alphabet:
-      position = ((alphabet.index(letter) - shift) % (length))
-      message.append(alphabet[position])
-  print("".join(message))
+caesar(text=text, shift=shift)
 
-if direction == "encode":
-  encrypt(text=text, shift=shift)
-if direction == "decode":
-  decrypt(text=text, shift=shift)
